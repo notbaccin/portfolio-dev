@@ -1236,7 +1236,7 @@ async function loadGitHub() {
     document.getElementById('stat-repos').textContent = user.public_repos;
 
     const pinnedContainer = document.getElementById('gh-pinned-projects');
-    const featuredRepos = repos.filter(r => !r.fork && r.name !== 'portfolio-dev' && r.name !== 'html-portfolio').slice(0, 5);
+    const featuredRepos = repos.filter(r => (!r.fork || r.name === 'controle-de-estoque') && r.name !== 'html-portfolio').slice(0, 5);
     featuredRepos.forEach(repo => {
       const card = document.createElement('div');
       card.className = 'project-card';
