@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enzo Baccin — Dev Portfolio</title>
+<link rel="icon" type="image/png" href="./img/s3.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #111111;
+    --bg2: #161616;
+    --bg3: #1c1c1c;
+    --bg4: #262626;
+    --border: rgba(255, 255, 255, 0.08);
+    --border2: rgba(255, 255, 255, 0.15);
+    --accent: #ffffff;
+    --accent-dim: rgba(255, 255, 255, 0.06);
+    --text: #ededed;
+    --text2: #9a9a9a;
+    --text3: #666666;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', sans-serif;
+    --spotify: #1DB954;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  body {
+  position: relative;
+}
+
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+  
+    background-image: url('/img/sumie-peixes-removebg-preview.png'); 
+  
+    background-size: 20%; 
+    background-position: bottom right;;
+    background-repeat: no-repeat;
+  
+    filter: invert(1); 
+    opacity: 0.15; 
+    z-index: -1;
+}
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+  /* Seleção de Texto Estilo Terminal */
+  ::selection {
+    background: var(--text);
+    color: var(--bg);
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(17, 17, 17, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text2);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 100px 2rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-inner { width: 100%; }
+
+  /* Avatar Profile */
+  .hero-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border2);
+    margin-bottom: 1.5rem;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.5s ease;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  }
+
+  .hero-avatar:hover {
+    transform: rotate(5deg) scale(1.05);
+    border-color: var(--accent);
+  }
+
+  .hero-label {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  h1 {
+    font-family: var(--mono);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+    display: grid;
+    cursor: default;
+  }
+
+  .name-wrapper {
+    grid-area: 1 / 1;
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+  }
+
+  .name-jp {
+    opacity: 0;
+    transform: translateY(15px);
+    color: var(--accent);
+  }
+
+  h1:hover .name-en {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+
+  h1:hover .name-jp {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hero-subtitle {
+    font-family: var(--mono);
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-weight: 300;
+    color: var(--text2);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-subtitle span { color: var(--accent); }
+
+  .hero-desc {
+    font-size: 16px;
+    color: var(--text2);
+    max-width: 520px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--bg);
+    font-weight: 600;
+  }
+
+  .btn-primary:hover {
+    background: #e0e0e0;
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border2);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 4rem;
+  }
+
+  .stat { display: flex; flex-direction: column; }
+
+  .stat-num {
+    font-family: var(--mono);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+  }
+
+  /* SECTION */
+  section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-header {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .section-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+  }
+
+  .section-title {
+    font-family: var(--mono);
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .about-text {
+    font-size: 15px;
+    color: var(--text2);
+    line-height: 1.9;
+  }
+
+  .about-text p + p { margin-top: 1rem; }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .skill-item {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text2);
+    display: flex; align-items: center; gap: 8px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .skill-item:hover { border-color: var(--accent); color: var(--text); }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .project-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .project-card:hover {
+    border-color: rgba(255,255,255,0.2);
+    transform: translateY(-3px);
+  }
+
+  .project-card:hover::before { opacity: 1; }
+
+  .project-top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .project-icon {
+    font-size: 20px; color: var(--accent);
+  }
+
+  .project-links { display: flex; gap: 10px; }
+
+  .project-links a {
+    color: var(--text3);
+    font-size: 18px;
+    transition: color 0.2s;
+    text-decoration: none;
+  }
+
+  .project-links a:hover { color: var(--accent); }
+
+  .project-name {
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-desc {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.7;
+    flex: 1;
+    margin-bottom: 1.25rem;
+  }
+
+  .project-tags {
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border2);
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+
+  /* LOADING SCREEN - DRAGÃO */
+  .loading-overlay {
+    position: fixed; inset: 0; z-index: 200;
+    background: var(--bg);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    transition: opacity 0.6s ease;
+  }
+
+  .loading-overlay.hidden { opacity: 0; pointer-events: none; }
+
+  .loader-content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Estilo do Nome em Japonês */
+  .bg-text {
+    position: absolute; 
+    font-size: 2.5rem; 
+    color: rgba(255, 255, 255, 0.25); 
+    letter-spacing: 10px; 
+    white-space: nowrap; 
+    z-index: 1; 
+  }
+
+  .dragon-loader {
+    width: 250px; 
+    z-index: 2; 
+    filter: invert(1); 
+    animation: pulse-dragon 2s infinite ease-in-out;
+  }
+
+  /* Animação suave de pulsar */
+  @keyframes pulse-dragon {
+    0% { transform: scale(0.95); opacity: 0.7; }
+    50% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.7; }
+  }
+
+  /* GITHUB SECTION */
+  .github-section {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .github-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 12px;
+  }
+
+  .github-avatar {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    border: 2px solid var(--border2);
+    object-fit: cover;
+  }
+
+  .github-avatar-placeholder {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--bg4);
+    border: 2px solid var(--border2);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .github-user-info { flex: 1; }
+
+  .github-username {
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .github-bio { font-size: 13px; color: var(--text2); margin-top: 2px; }
+
+  .github-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+  }
+
+  .github-stat {
+    padding: 1.25rem;
+    border-right: 1px solid var(--border);
+  }
+
+  .github-stat:last-child { border-right: none; }
+
+  .github-stat-num {
+    font-family: var(--mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .github-stat-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.08em;
+    margin-top: 2px;
+  }
+
+  .github-repos {
+    padding: 1.25rem 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .repo-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    transition: border-color 0.2s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .repo-card:hover { border-color: rgba(255,255,255,0.2); }
+
+  .repo-name {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .repo-desc {
+    font-size: 12px;
+    color: var(--text2);
+    line-height: 1.5;
+    margin-bottom: 8px;
+    min-height: 36px;
+  }
+
+  .repo-meta {
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .repo-lang {
+    display: flex; align-items: center; gap: 4px;
+    font-family: var(--mono); font-size: 11px; color: var(--text3);
+  }
+
+  .lang-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+
+  .repo-stars {
+    font-family: var(--mono); font-size: 11px; color: var(--text3);
+    display: flex; align-items: center; gap: 3px;
+  }
+
+  .github-loading, .github-error {
+    padding: 2rem;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text3);
+  }
+
+  /* SPOTIFY */
+  .spotify-setup {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .spotify-setup-title {
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text2);
+    margin-bottom: 0.5rem;
+  }
+
+  .spotify-setup-desc {
+    font-size: 13px;
+    color: var(--text3);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+
+  .setup-form {
+    display: flex; flex-direction: column; gap: 0.75rem;
+  }
+
+  .setup-form input {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    padding: 10px 14px;
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .setup-form input:focus { border-color: var(--spotify); }
+
+  .btn-spotify {
+    background: var(--spotify);
+    color: #000;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 100px;
+    border: none;
+    font-family: var(--sans);
+    font-size: 13px;
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: transform 0.15s, background 0.15s;
+    text-decoration: none;
+  }
+
+  .btn-spotify:hover { background: #1ed760; transform: scale(1.02); }
+
+  .spotify-player {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .spotify-header {
+    background: var(--bg3);
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .spotify-icon {
+    width: 20px; height: 20px;
+    fill: var(--spotify);
+  }
+
+  .spotify-header-title {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .spotify-tabs {
+    display: flex; border-bottom: 1px solid var(--border);
+  }
+
+  .spotify-tab {
+    flex: 1;
+    padding: 0.75rem;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text3);
+    background: none; border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+    letter-spacing: 0.08em;
+  }
+
+  .spotify-tab.active {
+    color: var(--spotify);
+    border-bottom: 2px solid var(--spotify);
+  }
+
+  .spotify-content { padding: 1rem 1.5rem; }
+
+  .track-list { display: flex; flex-direction: column; gap: 4px; }
+
+  .track-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    transition: background 0.15s;
+  }
+
+  .track-item:hover { background: var(--bg3); }
+
+  .track-num {
+    font-family: var(--mono); font-size: 12px; color: var(--text3);
+    width: 18px; text-align: right; flex-shrink: 0;
+  }
+
+  .track-art {
+    width: 38px; height: 38px;
+    border-radius: 4px;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: var(--bg4);
+  }
+
+  .track-info { flex: 1; min-width: 0; }
+
+  .track-name {
+    font-size: 13px; font-weight: 500;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+
+  .track-artist {
+    font-size: 12px; color: var(--text2);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+
+  .track-duration {
+    font-family: var(--mono); font-size: 11px; color: var(--text3);
+    flex-shrink: 0;
+  }
+
+  .album-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 1rem;
+  }
+
+  .album-card { text-decoration: none; color: inherit; }
+
+  .album-art {
+    width: 100%; aspect-ratio: 1;
+    border-radius: 6px;
+    object-fit: cover;
+    display: block;
+    background: var(--bg4);
+    margin-bottom: 8px;
+    transition: transform 0.2s;
+  }
+
+  .album-card:hover .album-art { transform: scale(1.03); }
+
+  .album-name {
+    font-size: 12px; font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: 2px;
+    overflow: hidden; display: -webkit-box;
+    -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  }
+
+  .album-artist { font-size: 11px; color: var(--text2); }
+
+  .spotify-loading, .spotify-error {
+    padding: 2rem; text-align: center;
+    font-family: var(--mono); font-size: 13px; color: var(--text3);
+  }
+
+  /* --- WIDGET NOW PLAYING --- */
+  #now-playing-widget {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    background: rgba(17, 17, 17, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text);
+    z-index: 90;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  }
+
+  .now-playing-hidden {
+    transform: translateY(100px) scale(0.9) !important;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  #now-playing-widget:hover {
+    border-color: var(--spotify);
+    transform: translateY(-5px);
+  }
+
+  #np-image {
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    object-fit: cover;
+  }
+
+  .np-info { display: flex; flex-direction: column; justify-content: center; }
+
+  .np-status {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--spotify);
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 3px;
+  }
+
+  .np-title {
+    font-size: 13px;
+    font-weight: 500;
+    max-width: 160px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .np-artist {
+    font-size: 11px;
+    color: var(--text2);
+    max-width: 160px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Animação das barrinhas verdes (equalizador) */
+  .np-bars { display: flex; gap: 2px; align-items: flex-end; height: 10px; }
+  .np-bar { width: 3px; background-color: var(--spotify); border-radius: 1px; animation: bounce 1s infinite alternate; }
+  .np-bar:nth-child(2) { animation-delay: 0.2s; }
+  .np-bar:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes bounce {
+    0% { height: 3px; }
+    100% { height: 10px; }
+  }
+
+  @media (max-width: 640px) {
+    #now-playing-widget {
+      bottom: auto; top: 70px; right: 10px; left: 10px;
+    }
+  }
+
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .contact-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    text-decoration: none;
+    color: inherit;
+    display: flex; align-items: center; gap: 12px;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    outline: none;
+    font-family: inherit;
+  }
+
+  .contact-card:hover {
+    border-color: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+  }
+
+  .contact-icon {
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    background: var(--accent-dim);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .contact-label {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--text3); letter-spacing: 0.08em; margin-bottom: 2px;
+  }
+
+  .contact-value { font-size: 13px; font-weight: 500; color: var(--text); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text3);
+  }
+
+  footer a { color: var(--accent); text-decoration: none; }
+
+  /* CURSOR BLINK */
+  .blink {
+    display: inline-block;
+    width: 3px; height: 1em;
+    background: var(--accent);
+    margin-left: 4px;
+    vertical-align: text-bottom;
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* FADE IN */
+  .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s, transform 0.5s; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 640px) {
+    .about-grid, .contact-grid, .github-stats,
+    .github-repos, .skills-grid { grid-template-columns: 1fr; }
+    #spotify > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+    .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    section { padding: 3rem 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="loading-overlay" id="loader">
+  <div class="loader-content">
+    <img src="img/dragao-transparente.png" alt="Carregando..." class="dragon-loader">
+  </div>
+</div>
+
+<nav>
+  <div class="nav-logo">enzo@portfolio:~$</div>
+  <ul class="nav-links">
+    <li><a href="#sobre">~/about</a></li>
+    <li><a href="#projetos">~/projects</a></li>
+    <li><a href="#github">~/github</a></li>
+    <li><a href="#spotify">~/spotify</a></li>
+    <li><a href="#contato">~/contact</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<div class="hero">
+  <div class="hero-inner">
+    <img src="https://github.com/notbaccin.png" alt="Enzo Baccin" class="hero-avatar">
+    
+    <div class="hero-label">import { Unisul } from 'sistemas-da-informacao';</div>
+    <h1>
+      <div class="name-wrapper name-en">Enzo Baccin<span class="blink"></span></div>
+      <div class="name-wrapper name-jp">エンツォ・バッシン<span class="blink"></span></div>
+    </h1>
+    <div class="hero-subtitle">
+      <span style="color: var(--text3)"><</span>Desenvolvedor <span id="typed-role" style="color: var(--accent)">Backend</span><span style="color: var(--text3)"> /></span>
+    </div>
+    <p class="hero-desc">
+      Estudante de Sistemas da Informação em Florianópolis, SC. Focado em desenvolvimento de soluções tecnológicas, lógica de programação e construção de sistemas que resolvem problemas reais.
+    </p>
+    <div class="hero-cta">
+      <a href="https://github.com/notbaccin" target="_blank" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        Ver GitHub
+      </a>
+      <a href="#contato" class="btn btn-outline">
+        Entrar em contato
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num" id="stat-repos">--</div>
+        <div class="stat-label">git.repos</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2+</div>
+        <div class="stat-label">languages.count</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3ª</div>
+        <div class="stat-label">unisul.semester</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="sobre" class="fade-in">
+  <div class="section-header">
+    <span class="section-num">// 01</span>
+    <h2 class="section-title">about.md</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>Olá! Sou <strong style="color:var(--text)">Enzo Toigo Baccin</strong>, estudante de Sistemas da Informação na Unisul em Florianópolis. Tenho facilidade de aprendizado e gosto de resolver problemas de forma lógica e eficiente.</p>
+      <p>Busco oportunidade de estágio na área de TI para aplicar conhecimentos acadêmicos em um ambiente corporativo, contribuindo com a equipe enquanto continuo evoluindo como profissional.</p>
+      <p>Falo <strong style="color:var(--text)">inglês fluente</strong> e tenho perfil colaborativo — gosto de trabalhar em equipe e de comunicação clara, seja escrita ou verbal.</p>
+    </div>
+    <div>
+      <p style="font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:0.1em;margin-bottom:1rem">package.json // dependencies</p>
+      <div class="skills-grid">
+        <div class="skill-item"><i class="devicon-java-plain colored" style="font-size: 1.2rem;"></i> Java</div>
+        <div class="skill-item"><i class="devicon-python-plain colored" style="font-size: 1.2rem;"></i> Python</div>
+        <div class="skill-item"><i class="devicon-html5-plain colored" style="font-size: 1.2rem;"></i> HTML</div>
+        <div class="skill-item"><i class="devicon-mysql-plain colored" style="font-size: 1.2rem;"></i> MySQL</div>
+        <div class="skill-item"><i class="devicon-git-plain colored" style="font-size: 1.2rem;"></i> Git</div>
+        <div class="skill-item"><i class="devicon-linux-plain" style="font-size: 1.2rem; color: #fff;"></i> Linux</div>
+        <div class="skill-item"><span class="skill-dot" style="background:var(--text)"></span>Cisco Packet Tracer</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projetos" class="fade-in">
+  <div class="section-header">
+    <span class="section-num">// 02</span>
+    <h2 class="section-title">projects.json</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="projects-grid" id="projects-container">
+    <div class="project-card">
+      <div class="project-top">
+        <svg class="project-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91A16 16 0 0016 17.91l1.27-1.26a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0124 18z"/></svg>
+        <div class="project-links">
+          <a href="https://github.com/notbaccin" target="_blank" title="GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="project-name">Portfolio Website</div>
+      <div class="project-desc">Site portfólio pessoal com integração real de GitHub e Spotify, tema dark, animações suaves e design responsivo.</div>
+      <div class="project-tags">
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">JavaScript</span>
+      </div>
+    </div>
+    <div id="gh-pinned-projects"></div>
+  </div>
+</section>
+
+<section id="github" class="fade-in">
+  <div class="section-header">
+    <span class="section-num">// 03</span>
+    <h2 class="section-title">github.sh</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="github-section">
+    <div id="github-content">
+      <div class="github-loading">
+        <span style="color:var(--accent)">›</span> Carregando dados do GitHub...
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="spotify" class="fade-in">
+  <div class="section-header">
+    <span class="section-num">// 04</span>
+    <h2 class="section-title">spotify.api</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;align-items:start">
+    <div>
+      <p style="font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:0.1em;margin-bottom:0.75rem">GET /playlist/favorite</p>
+      <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border)">
+        <iframe
+          title="Spotify Playlist"
+          src="https://open.spotify.com/embed/playlist/64y9sORcUG9BPxexSKbz6a?utm_source=generator&theme=0"
+          width="100%"
+          height="380"
+          frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+
+    <div>
+      <p style="font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:0.1em;margin-bottom:0.75rem">GET /api/spotify/top-tracks</p>
+      <div id="spotify-container">
+        </div>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="fade-in">
+  <div class="section-header">
+    <span class="section-num">// 05</span>
+    <h2 class="section-title">contact.ts</h2>
+    <div class="section-line"></div>
+  </div>
+  <p style="color:var(--text2);margin-bottom:2rem;font-size:15px;max-width:440px">
+    Aberto a oportunidades de estágio e projetos. Pode me chamar por qualquer um dos canais abaixo.
+  </p>
+  <div class="contact-grid">
+    <a href="mailto:enzobaccin3@gmail.com" class="contact-card">
+      <div class="contact-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
+      </div>
+      <div>
+        <div class="contact-label">Email</div>
+        <div class="contact-value">enzobaccin3@gmail.com</div>
+      </div>
+    </a>
+    
+    <a href="https://github.com/notbaccin" target="_blank" class="contact-card">
+      <div class="contact-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+      </div>
+      <div>
+        <div class="contact-label">GitHub</div>
+        <div class="contact-value">@notbaccin</div>
+      </div>
+    </a>
+    
+    <a href="https://linkedin.com/in/enzobaccin" target="_blank" class="contact-card">
+      <div class="contact-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </div>
+      <div>
+        <div class="contact-label">LinkedIn</div>
+        <div class="contact-value">/in/enzobaccin</div>
+      </div>
+    </a>
+
+    <button onclick="copiarDiscord(event)" class="contact-card">
+      <div class="contact-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg>
+      </div>
+      <div>
+        <div class="contact-label">Discord</div>
+        <div class="contact-value" id="discord-text">bacc1n</div>
+      </div>
+    </button>
+  </div>
+</section>
+
+</main>
+
+<a id="now-playing-widget" class="now-playing-hidden" href="#" target="_blank">
+  <img id="np-image" src="" alt="Album Art">
+  <div class="np-info">
+    <div class="np-status">
+      <div class="np-bars">
+        <span class="np-bar"></span><span class="np-bar"></span><span class="np-bar"></span>
+      </div>
+      Escutando agora
+    </div>
+    <div class="np-title" id="np-title">Carregando...</div>
+    <div class="np-artist" id="np-artist"></div>
+  </div>
+</a>
+
+<footer>
+  <span style="color:var(--text3)">return</span>
+  <a href="https://github.com/notbaccin" style="color:var(--accent)">"Enzo Baccin"</a><span style="color:var(--text3)">;</span>
+  <br>
+  <span style="color:var(--text3); margin-top:4px; display:inline-block">// Florianópolis, SC</span>
+</footer>
+
+<script>
+/* ===== LOADER ===== */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const loader = document.getElementById('loader');
+    loader.classList.add('hidden');
+    setTimeout(() => loader.remove(), 600);
+  }, 1000);
+});
+
+/* ===== TYPING ROLE ===== */
+const roles = ['Backend Dev', 'Estudante SI', 'Python Dev', 'Problem Solver'];
+let ri = 0, ci = 0, deleting = false;
+const typedEl = document.getElementById('typed-role');
+
+function typeRole() {
+  const r = roles[ri];
+  if (!deleting) {
+    typedEl.textContent = r.slice(0, ++ci);
+    if (ci === r.length) { deleting = true; setTimeout(typeRole, 2000); return; }
+  } else {
+    typedEl.textContent = r.slice(0, --ci);
+    if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; }
+  }
+  setTimeout(typeRole, deleting ? 60 : 100);
+}
+setTimeout(typeRole, 1500);
+
+/* ===== SCROLL FADE ===== */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+/* ===== GITHUB API ===== */
+const GH_USER = 'notbaccin';
+const LANG_COLORS = {
+  JavaScript:'#f1e05a', Python:'#3572A5', Java:'#b07219',
+  HTML:'#e34c26', CSS:'#563d7c', TypeScript:'#2b7489',
+  'C++':'#f34b7d', C:'#555555', Go:'#00ADD8', Rust:'#dea584',
+  Shell:'#89e051', Ruby:'#701516', PHP:'#4F5D95'
+};
+
+async function loadGitHub() {
+  try {
+    const [userRes, reposRes] = await Promise.all([
+      fetch(`https://api.github.com/users/${GH_USER}`),
+      fetch(`https://api.github.com/users/${GH_USER}/repos?sort=updated&per_page=6`)
+    ]);
+    if (!userRes.ok) throw new Error('not found');
+    const user = await userRes.json();
+    const repos = await reposRes.json();
+
+    document.getElementById('stat-repos').textContent = user.public_repos;
+
+    const pinnedContainer = document.getElementById('gh-pinned-projects');
+    const featuredRepos = repos.filter(r => !r.fork).slice(0, 5);
+    featuredRepos.forEach(repo => {
+      const card = document.createElement('div');
+      card.className = 'project-card';
+      const langColor = LANG_COLORS[repo.language] || '#8892a4';
+      card.innerHTML = `
+        <div class="project-top">
+          <svg class="project-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+          </svg>
+          <div class="project-links">
+            <a href="${repo.html_url}" target="_blank" title="GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="project-name">${repo.name}</div>
+        <div class="project-desc">${repo.description || 'Sem descrição ainda.'}</div>
+        <div class="project-tags">
+          ${repo.language ? `<span class="tag">${repo.language}</span>` : ''}
+          ${repo.stargazers_count > 0 ? `<span class="tag">⭐ ${repo.stargazers_count}</span>` : ''}
+        </div>`;
+      pinnedContainer.parentNode.insertBefore(card, pinnedContainer);
+    });
+    pinnedContainer.remove();
+
+    const ghDiv = document.getElementById('github-content');
+    const avatarHtml = user.avatar_url
+      ? `<img src="${user.avatar_url}" class="github-avatar" alt="Avatar" />`
+      : `<div class="github-avatar-placeholder">EB</div>`;
+
+    const repoCards = repos.filter(r => !r.fork).slice(0, 4).map(r => {
+      const lc = LANG_COLORS[r.language] || '#8892a4';
+      return `<a class="repo-card" href="${r.html_url}" target="_blank">
+        <div class="repo-name">${r.name}</div>
+        <div class="repo-desc">${r.description || 'Sem descrição.'}</div>
+        <div class="repo-meta">
+          ${r.language ? `<div class="repo-lang"><span class="lang-dot" style="background:${lc}"></span>${r.language}</div>` : ''}
+          ${r.stargazers_count > 0 ? `<div class="repo-stars">★ ${r.stargazers_count}</div>` : ''}
+        </div>
+      </a>`;
+    }).join('');
+
+    ghDiv.innerHTML = `
+      <div class="github-header">
+        ${avatarHtml}
+        <div class="github-user-info">
+          <div class="github-username">${user.login}</div>
+          <div class="github-bio">${user.bio || 'Estudante de Sistemas da Informação — Unisul'}</div>
+        </div>
+        <a href="${user.html_url}" target="_blank" style="color:var(--accent);font-family:var(--mono);font-size:12px;text-decoration:none">
+          Ver perfil →
+        </a>
+      </div>
+      <div class="github-stats">
+        <div class="github-stat">
+          <div class="github-stat-num">${user.public_repos}</div>
+          <div class="github-stat-label">REPOS</div>
+        </div>
+        <div class="github-stat">
+          <div class="github-stat-num">${user.followers}</div>
+          <div class="github-stat-label">SEGUIDORES</div>
+        </div>
+        <div class="github-stat">
+          <div class="github-stat-num">${user.following}</div>
+          <div class="github-stat-label">SEGUINDO</div>
+        </div>
+      </div>
+      <div class="github-repos">${repoCards}</div>`;
+  } catch(e) {
+    document.getElementById('github-content').innerHTML = `
+      <div class="github-error">
+        <span style="color:var(--accent);font-size:1.2rem">!</span>
+        Não foi possível carregar dados do GitHub.
+      </div>`;
+  }
+}
+loadGitHub();
+
+/* ===== SPOTIFY (Integração Automática com Vercel API) ===== */
+async function carregarMinhasMusicas() {
+  const container = document.getElementById('spotify-container');
+  
+  container.innerHTML = `<div class="spotify-player">
+    <div class="spotify-header">
+      <span class="spotify-header-title">Músicas em destaque</span>
+    </div>
+    <div class="spotify-tabs">
+      <button class="spotify-tab active" onclick="showTab('tracks',this)">Faixas</button>
+      <button class="spotify-tab" onclick="showTab('albums',this)">Álbuns</button>
+    </div>
+    <div class="spotify-content" id="spotify-tracks-content">
+      <div style="font-size:13px;color:var(--text3);text-align:center;">Carregando músicas...</div>
+    </div>
+    <div class="spotify-content" id="spotify-albums-content" style="display:none">
+      <div style="font-size:13px;color:var(--text3);text-align:center;">Carregando álbuns...</div>
+    </div>
+  </div>`;
+
+  try {
+    const resposta = await fetch('/api/spotify');
+    if (!resposta.ok) throw new Error('Erro ao buscar dados da API');
+    
+    const tracksData = await resposta.json();
+
+    const topTracks = tracksData.items.slice(0, 10);
+    const tracksHtml = `<div class="track-list">${topTracks.map((t, i) => `
+      <div class="track-item">
+        <div class="track-num">${i+1}</div>
+        <img class="track-art" src="${t.album.images[2]?.url || t.album.images[0]?.url}" alt="${t.name}" loading="lazy"/>
+        <div class="track-info">
+          <div class="track-name">${t.name}</div>
+          <div class="track-artist">${t.artists.map(a=>a.name).join(', ')}</div>
+        </div>
+        <div class="track-duration">${Math.floor(t.duration_ms/60000)}:${String(Math.floor((t.duration_ms%60000)/1000)).padStart(2,'0')}</div>
+      </div>`).join('')}</div>`;
+
+    const albumsSet = new Map();
+    tracksData.items.forEach(t => {
+      if (!albumsSet.has(t.album.id)) albumsSet.set(t.album.id, t.album);
+    });
+
+    const topAlbums = [...albumsSet.values()].slice(0, 8);
+    const albumsHtml = `<div class="album-grid">${topAlbums.map(a => `
+      <a class="album-card" href="${a.external_urls?.spotify}" target="_blank">
+        <img class="album-art" src="${a.images[1]?.url || a.images[0]?.url}" alt="${a.name}" loading="lazy"/>
+        <div class="album-name">${a.name}</div>
+        <div class="album-artist">${a.artists.map(x=>x.name).join(', ')}</div>
+      </a>`).join('')}</div>`;
+
+    document.getElementById('spotify-tracks-content').innerHTML = tracksHtml;
+    document.getElementById('spotify-albums-content').innerHTML = albumsHtml;
+
+  } catch(e) {
+    document.getElementById('spotify-tracks-content').innerHTML = `
+      <div style="font-size:13px;text-align:center;color:var(--text2);">
+        Não foi possível carregar as músicas no momento.
+      </div>`;
+  }
+}
+
+function showTab(tab, btn) {
+  document.querySelectorAll('.spotify-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('spotify-tracks-content').style.display = tab === 'tracks' ? '' : 'none';
+  document.getElementById('spotify-albums-content').style.display = tab === 'albums' ? '' : 'none';
+}
+
+window.addEventListener('DOMContentLoaded', carregarMinhasMusicas);
+
+/* ===== DISCORD COPY ===== */
+function copiarDiscord(e) {
+  e.preventDefault();
+  navigator.clipboard.writeText('bacc1n');
+  const textEl = document.getElementById('discord-text');
+  const originalText = textEl.innerText;
+  
+  textEl.innerText = 'Copiado!';
+  textEl.style.color = 'var(--accent)';
+  
+  setTimeout(() => {
+    textEl.innerText = originalText;
+    textEl.style.color = 'var(--text)';
+  }, 2000);
+}
+
+/* ===== NOW PLAYING (SPOTIFY) ===== */
+async function checkNowPlaying() {
+  try {
+    const res = await fetch('/api/now-playing');
+    const data = await res.json();
+    const widget = document.getElementById('now-playing-widget');
+
+    if (data.isPlaying) {
+      document.getElementById('np-image').src = data.albumImageUrl;
+      document.getElementById('np-title').textContent = data.title;
+      document.getElementById('np-artist').textContent = data.artist;
+      widget.href = data.songUrl;
+      widget.classList.remove('now-playing-hidden');
+    } else {
+      widget.classList.add('now-playing-hidden'); 
+    }
+  } catch (e) {
+    console.error('Nenhuma música tocando agora ou erro na API.');
+  }
+}
+
+checkNowPlaying();
+setInterval(checkNowPlaying, 20000);
+</script>
+</body>
+</html>
